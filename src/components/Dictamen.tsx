@@ -4,7 +4,7 @@ import { FileText, CheckCircle, Download } from 'lucide-react';
 const Dictamen: React.FC = () => {
   const downloadPDF = () => {
     const link = document.createElement('a');
-    link.href = '/planos-av-espana.pdf';
+    link.href = '/dictamen-av-espana.pdf';
     link.download = 'Dictamen-Av-España-1640.pdf';
     link.click();
   };

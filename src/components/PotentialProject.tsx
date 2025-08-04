@@ -1,23 +1,36 @@
-import React from 'react';
-import { Building2, Users, Download, TrendingUp } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Building2, Users, TrendingUp, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const PotentialProject: React.FC = () => {
-  const downloadPotentialExamples = () => {
-    // Create downloads for all files in the potencial folder
-    const files = [
-      { name: 'ejemplo1.jpg', url: '/potencial/ejemplo1.jpg' },
-      { name: 'ejemplo2.jpg', url: '/potencial/ejemplo2.jpg' },
-      { name: 'ejemplo3.jpeg', url: '/potencial/ejemplo3.jpeg' }
-    ];
-    
-    files.forEach((file, index) => {
-      setTimeout(() => {
-        const link = document.createElement('a');
-        link.href = file.url;
-        link.download = `Proyecto-Potencial-${file.name}`;
-        link.click();
-      }, index * 500); // Delay each download by 500ms
-    });
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const images = [
+    '/potencial/1.jpg',
+    '/potencial/2.jpg', 
+    '/potencial/3.jpeg',
+    '/potencial/4.jpg'
+  ];
+
+  // Auto-advance slideshow every 4 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
   };
 
   const features = [
@@ -46,19 +59,51 @@ const PotentialProject: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
-          {/* Project Visualization */}
+          {/* Project Visualization - Slideshow */}
           <div className="order-2 lg:order-1">
             <div className="relative">
-              <img
-                src="/proyecto-potencial-sketch.jpg"
-                alt="Proyecto conceptual - esquema de desarrollo potencial para el terreno"
-                className="w-full h-80 sm:h-96 object-cover rounded-lg shadow-xl"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-lg"></div>
-              <div className="absolute bottom-4 left-4 text-white">
+              <div className="relative h-80 sm:h-96 overflow-hidden rounded-lg shadow-xl bg-white">
+                <img
+                  src={images[currentImageIndex]}
+                  alt={`Proyecto potencial - imagen ${currentImageIndex + 1}`}
+                  className="w-full h-full object-contain transition-opacity duration-500"
+                  loading="lazy"
+                />
+                
+                {/* Navigation arrows */}
+                <button
+                  onClick={prevImage}
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-200"
+                  aria-label="Imagen anterior"
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </button>
+                <button
+                  onClick={nextImage}
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-200"
+                  aria-label="Siguiente imagen"
+                >
+                  <ChevronRight className="w-6 h-6" />
+                </button>
+                
+                {/* Slide indicators */}
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                  {images.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentImageIndex(index)}
+                      className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                        index === currentImageIndex ? 'bg-purple-600' : 'bg-gray-400'
+                      }`}
+                      aria-label={`Ir a imagen ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+              
+              <div className="absolute bottom-4 left-4 text-gray-800 bg-white/80 px-2 py-1 rounded">
                 <p className="text-sm font-medium">Proyecto Potencial</p>
-                <p className="text-xs opacity-90">Esquema conceptual</p>
+                <p className="text-xs opacity-75">Imagen {currentImageIndex + 1} de {images.length}</p>
               </div>
             </div>
           </div>
@@ -69,14 +114,14 @@ const PotentialProject: React.FC = () => {
               Imagina las Posibilidades
             </h3>
             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              Este terreno ofrece un gran potencial para desarrollo. Imagina construir 
-              un edificio moderno de varios pisos con terrazas verdes, apartamentos de 
-              lujo y espacios sostenibles.
-            </p>
-            <p className="text-gray-600 mb-8">
               La ubicación estratégica en Avenida España permite ampliaciones para 
               proyectos residenciales multifamiliares o desarrollos comerciales mixtos, 
               aprovechando la excelente conectividad y servicios de la zona.
+            </p>
+            <p className="text-gray-600 mb-8">
+              Existen planos ya hechos para un proyecto de desarrollo vertical de 9 a 13 departamentos, con estacionamiento subterráneo, jardines y áreas comunes. 
+              Este proyecto aprovecha al máximo el terreno de 500 m², permitiendo un uso eficiente del espacio y maximizando el retorno de inversión.
+              Este proyecto cumple con todos los requisitos del Plan Parcial de la zona, asegurando que se ajusta a las normativas locales y aprovecha al máximo el potencial del terreno.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
@@ -92,14 +137,6 @@ const PotentialProject: React.FC = () => {
                 </div>
               ))}
             </div>
-
-            <button
-              onClick={downloadPotentialExamples}
-              className="inline-flex items-center bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 transform hover:scale-105"
-            >
-              <Download className="w-5 h-5 mr-2" />
-              Descargar Ejemplos del Proyecto
-            </button>
           </div>
         </div>
 
