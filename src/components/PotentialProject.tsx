@@ -1,22 +1,30 @@
 import React from 'react';
-import { Building2, Leaf, TrendingUp, Users } from 'lucide-react';
+import { Building2, Users, Download, TrendingUp } from 'lucide-react';
 
 const PotentialProject: React.FC = () => {
+  const downloadPotentialExamples = () => {
+    // Create downloads for all files in the potencial folder
+    const files = [
+      { name: 'ejemplo1.jpg', url: '/potencial/ejemplo1.jpg' },
+      { name: 'ejemplo2.jpg', url: '/potencial/ejemplo2.jpg' },
+      { name: 'ejemplo3.jpeg', url: '/potencial/ejemplo3.jpeg' }
+    ];
+    
+    files.forEach((file, index) => {
+      setTimeout(() => {
+        const link = document.createElement('a');
+        link.href = file.url;
+        link.download = `Proyecto-Potencial-${file.name}`;
+        link.click();
+      }, index * 500); // Delay each download by 500ms
+    });
+  };
+
   const features = [
     {
       icon: Building2,
       title: 'Desarrollo Vertical',
       description: 'Posibilidad de hasta 5-7 pisos según zonificación local'
-    },
-    {
-      icon: Leaf,
-      title: 'Diseño Ecológico',
-      description: 'Integración de vegetación para un proyecto sostenible'
-    },
-    {
-      icon: TrendingUp,
-      title: 'Alta Rentabilidad',
-      description: 'Oportunidad de inversión con excelente retorno'
     },
     {
       icon: Users,
@@ -42,15 +50,15 @@ const PotentialProject: React.FC = () => {
           <div className="order-2 lg:order-1">
             <div className="relative">
               <img
-                src="https://images.pexels.com/photos/2187605/pexels-photo-2187605.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop"
-                alt="Proyecto conceptual - edificio moderno con terrazas verdes y apartamentos de lujo"
+                src="/proyecto-potencial-sketch.jpg"
+                alt="Proyecto conceptual - esquema de desarrollo potencial para el terreno"
                 className="w-full h-80 sm:h-96 object-cover rounded-lg shadow-xl"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-lg"></div>
               <div className="absolute bottom-4 left-4 text-white">
-                <p className="text-sm font-medium">Ejemplo conceptual</p>
-                <p className="text-xs opacity-90">Desarrollo moderno sustentable</p>
+                <p className="text-sm font-medium">Proyecto Potencial</p>
+                <p className="text-xs opacity-90">Esquema conceptual</p>
               </div>
             </div>
           </div>
@@ -85,14 +93,13 @@ const PotentialProject: React.FC = () => {
               ))}
             </div>
 
-            <a
-              href="https://w.app/6j0ysx"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 transform hover:scale-105"
+            <button
+              onClick={downloadPotentialExamples}
+              className="inline-flex items-center bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 transform hover:scale-105"
             >
-              Contactar para más detalles
-            </a>
+              <Download className="w-5 h-5 mr-2" />
+              Descargar Ejemplos del Proyecto
+            </button>
           </div>
         </div>
 

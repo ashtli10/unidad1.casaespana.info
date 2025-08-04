@@ -1,0 +1,17 @@
+{
+  "name": "Avenida España Property",
+  "short_name": "Av España",
+  "description": "Property for sale on Avenida España 1640, Guadalajara",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1f2937",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
