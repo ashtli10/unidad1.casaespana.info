@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
             </p>
           </div>
 
-          {/* WhatsApp Button */}
+          {/* Whatsapp Button */}
           <div>
             <a
               href="https://w.app/6j0ysx"
@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
               className="flex items-center bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-full transition-colors duration-200 transform hover:scale-105"
             >
               <MessageCircle className="w-4 h-4 mr-2" />
-              <span className="font-medium">Contacto</span>
+              <span className="font-medium">Whatsapp</span>
             </a>
           </div>
         </div>
@@ -55,7 +55,7 @@ const Footer: React.FC = () => {
               className="flex-1 flex items-center justify-center bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-lg transition-colors duration-200"
             >
               <MessageCircle className="w-5 h-5 mr-2" />
-              <span>WhatsApp</span>
+              <span>Whatsapp</span>
             </a>
           </div>
         </div>
