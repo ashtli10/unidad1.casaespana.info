@@ -1,45 +1,30 @@
 import React, { useState } from 'react';
-import { ZoomIn, ZoomOut, RotateCcw } from 'lucide-react';
+import { ZoomIn, ZoomOut, RotateCcw, Download } from 'lucide-react';
 
 const Blueprints: React.FC = () => {
   const [zoom, setZoom] = useState(1);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
 
   const zoomIn = () => setZoom(prev => Math.min(prev + 0.2, 3));
   const zoomOut = () => setZoom(prev => Math.max(prev - 0.2, 0.5));
   const resetZoom = () => {
     setZoom(1);
-    setPosition({ x: 0, y: 0 });
   };
 
-  const handleMouseDown = (e: React.MouseEvent) => {
-    setIsDragging(true);
-    setDragStart({ x: e.clientX - position.x, y: e.clientY - position.y });
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging) return;
-    setPosition({
-      x: e.clientX - dragStart.x,
-      y: e.clientY - dragStart.y
-    });
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
+  const downloadPDF = () => {
+    const link = document.createElement('a');
+    link.href = '/planos-av-espana.pdf';
+    link.download = 'Planos-Av-España-1640.pdf';
+    link.click();
   };
 
   const specifications = [
-    { label: 'Superficie Total', value: '500 m²' },
-    { label: 'Ubicación', value: 'Av. España 4160, Guadalajara' },
-    { label: 'Clave Catastral', value: '0051326013' },
-    { label: 'Frente Aproximado', value: '20 metros' },
-    { label: 'Fondo Aproximado', value: '25 metros' },
-    { label: 'Tipo de Terreno', value: 'Urbano residencial' },
-    { label: 'Servicios', value: 'Agua, luz, drenaje' },
-    { label: 'Zonificación', value: 'Habitacional mixto' }
+    { label: 'Área de Terreno', value: '500 m²' },
+    { label: 'Planta Baja', value: '306.43 m²' },
+    { label: 'Planta Alta', value: '24.18 m²' },
+    { label: 'Total Construcción', value: '330.61 m²' },
+    { label: 'Ubicación', value: 'AV. ESPAÑA 1640, MODERNA, 44190 GUADALAJARA, JALISCO' },
+    { label: 'Frente', value: '10 metros' },
+    { label: 'Fondo', value: '50 metros' }
   ];
 
   return (
@@ -86,29 +71,29 @@ const Blueprints: React.FC = () => {
               </div>
               
               <div className="relative bg-white rounded-lg overflow-hidden" style={{ height: '400px' }}>
-                <div
-                  className="cursor-move w-full h-full flex items-center justify-center"
-                  onMouseDown={handleMouseDown}
-                  onMouseMove={handleMouseMove}
-                  onMouseUp={handleMouseUp}
-                  onMouseLeave={handleMouseUp}
-                >
+                <div className="w-full h-full flex items-center justify-center">
                   <img
-                    src="https://images.pexels.com/photos/8292913/pexels-photo-8292913.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop"
-                    alt="Plano arquitectónico del terreno Av. España 4160 - dimensiones y distribución"
+                    src="/planos-avenida-espana.webp"
+                    alt="Plano arquitectónico del terreno Av. España 1640 - dimensiones y distribución"
                     className="max-w-full max-h-full object-contain transition-transform duration-200"
                     style={{
-                      transform: `scale(${zoom}) translate(${position.x / zoom}px, ${position.y / zoom}px)`,
-                      cursor: isDragging ? 'grabbing' : 'grab'
+                      transform: `scale(${zoom})`
                     }}
                     draggable={false}
                   />
                 </div>
               </div>
               
-              <p className="text-sm text-gray-500 mt-2 text-center">
-                Haz clic y arrastra para mover • Usa los botones para hacer zoom
-              </p>
+              <div className="text-center mt-4">
+                <button
+                  onClick={downloadPDF}
+                  className="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-colors duration-300 font-medium shadow-lg hover:shadow-xl"
+                  title="Descargar PDF"
+                >
+                  <Download className="w-5 h-5 mr-2" />
+                  Descargar Plano Arquitectónico PDF
+                </button>
+              </div>
             </div>
           </div>
 
@@ -124,16 +109,6 @@ const Blueprints: React.FC = () => {
                     <span className="text-gray-900 font-semibold">{spec.value}</span>
                   </div>
                 ))}
-              </div>
-
-              <div className="mt-8 p-4 bg-yellow-100 rounded-lg">
-                <h4 className="font-semibold text-gray-900 mb-2">Información Adicional</h4>
-                <ul className="text-sm text-gray-700 space-y-1">
-                  <li>• Terreno completamente urbanizado</li>
-                  <li>• Acceso directo desde Avenida España</li>
-                  <li>• Documentación en regla</li>
-                  <li>• Listo para construcción inmediata</li>
-                </ul>
               </div>
             </div>
           </div>

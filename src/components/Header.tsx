@@ -40,7 +40,7 @@ const Header: React.FC = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <h1 className="text-lg sm:text-xl font-bold text-gray-900">
-              Av. España 4160
+              Av. España 1640
             </h1>
           </div>
 

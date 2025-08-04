@@ -2,13 +2,6 @@ import React from 'react';
 import { ArrowDown } from 'lucide-react';
 
 const Hero: React.FC = () => {
-  const scrollToGallery = () => {
-    const element = document.getElementById('gallery');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
-
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -29,34 +22,15 @@ const Hero: React.FC = () => {
             Propiedad en Venta
           </span>
           <span className="text-yellow-400 block text-2xl sm:text-3xl lg:text-4xl">
-            Avenida España 4160, Guadalajara
+            AV. ESPAÑA 1640, MODERNA, 44190 GUADALAJARA, JALISCO
           </span>
         </h1>
         
         <p className="text-lg sm:text-xl lg:text-2xl text-white mb-8 leading-relaxed max-w-3xl mx-auto" 
            style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.7)' }}>
-          Terreno de 500 m² ideal para desarrollo residencial o comercial. 
-          Ubicación privilegiada con potencial para ampliación y construcción moderna.
-          <span className="block mt-2 text-yellow-300 font-semibold">Precio a consultar</span>
+          Terreno de 500 m² con construcción actual de 330.61 m² (planta baja 306.43 m², planta alta 24.18 m²). 
+          Frente 10m, fondo 50m. Ubicación privilegiada con potencial para desarrollo residencial o comercial.
         </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a
-            href="https://w.app/6j0ysx"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl w-full sm:w-auto"
-          >
-            Contactar vía WhatsApp
-          </a>
-          
-          <button
-            onClick={scrollToGallery}
-            className="bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white font-semibold py-4 px-8 rounded-full text-lg transition-all duration-300 border-2 border-white/50 hover:border-white/70 w-full sm:w-auto"
-          >
-            Ver Galería
-          </button>
-        </div>
       </div>
 
       {/* Scroll Indicator */}

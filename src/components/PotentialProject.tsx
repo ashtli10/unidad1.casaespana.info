@@ -104,9 +104,9 @@ const PotentialProject: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center">
               <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-yellow-600">500m²</span>
+                <span className="text-lg font-bold text-yellow-600">500m²</span>
               </div>
-              <h4 className="font-semibold text-gray-900 mb-2">Superficie Amplia</h4>
+              <h4 className="font-semibold text-gray-900 mb-2">Área de Terreno</h4>
               <p className="text-gray-600 text-sm">Terreno de 500 m² ideal para proyectos ambiciosos</p>
             </div>
             
