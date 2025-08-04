@@ -44,6 +44,23 @@ body {
   background: #555;
 }
 
+/* Hide horizontal scrollbar on mobile in lightbox */
+@media (max-width: 768px) {
+  .lightbox-container {
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .lightbox-container::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .lightbox-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
 /* Smooth animations */
 .transition-all {
   transition-property: all;

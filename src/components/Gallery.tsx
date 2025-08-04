@@ -104,7 +104,7 @@ const Gallery: React.FC = () => {
 
       {/* Full-Screen Lightbox */}
       {isLightboxOpen && (
-        <div className="fixed inset-0 bg-black z-50 flex flex-col">
+        <div className="fixed inset-0 bg-black z-50 flex flex-col lightbox-container">
           {/* Header */}
           <div className="flex items-center justify-between p-4 bg-black/90 backdrop-blur-sm">
             <div className="text-white">

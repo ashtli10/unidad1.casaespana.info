@@ -28,9 +28,9 @@ const Blueprints: React.FC = () => {
   ];
 
   return (
-    <section id="blueprints" className="py-16 sm:py-20 bg-white">
+    <section id="blueprints" className="pt-4 pb-16 sm:pt-5 sm:pb-20 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <div className="text-center mb-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
             Planos y Dimensiones
           </h2>
