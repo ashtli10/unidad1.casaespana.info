@@ -230,9 +230,9 @@ const Gallery: React.FC = () => {
 
         {/* Full-Screen Lightbox */}
         {isLightboxOpen && (
-        <div className="fixed inset-0 bg-black z-50 flex flex-col lightbox-container">
+        <div className="fixed inset-0 bg-black z-50 lightbox-container">
           {/* Header */}
-          <div className="flex items-center justify-between p-4 bg-black/90 backdrop-blur-sm">
+          <div className="flex items-center justify-between p-4 bg-black/90 backdrop-blur-sm h-16">
             <div className="text-white">
               <h3 className="font-semibold text-lg">Galería de Fotos</h3>
               <p className="text-sm text-gray-300">
@@ -249,12 +249,12 @@ const Gallery: React.FC = () => {
           </div>
 
           {/* Main Image Area */}
-          <div className="flex-1 relative flex items-center justify-center p-6 sm:p-8 lg:p-12">
-            <div className="relative max-w-full max-h-full flex items-center justify-center">
+          <div className="relative flex items-center justify-center p-6 sm:p-8 lg:p-12" style={{ height: 'calc(100vh - 160px)' }}>
+            <div className="relative w-full h-full flex items-center justify-center">
               <img
                 src={images[currentImageIndex].src}
                 alt={images[currentImageIndex].alt}
-                className="max-w-[90vw] max-h-[70vh] sm:max-w-[85vw] sm:max-h-[75vh] lg:max-w-[80vw] lg:max-h-[80vh] object-contain rounded-lg shadow-2xl"
+                className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
                 loading="lazy"
                 decoding="async"
               />
@@ -279,15 +279,15 @@ const Gallery: React.FC = () => {
           </div>
 
           {/* Image Description */}
-          <div className="bg-black/90 backdrop-blur-sm p-4 text-center">
+          <div className="bg-black/90 backdrop-blur-sm p-4 text-center h-16 flex items-center justify-center">
             <p className="text-white text-sm sm:text-base max-w-2xl mx-auto">
               {images[currentImageIndex].alt}
             </p>
           </div>
 
           {/* Thumbnail Navigation */}
-          <div className="bg-black/90 backdrop-blur-sm p-4 overflow-x-auto">
-            <div className="flex space-x-2 justify-center min-w-max">
+          <div className="bg-black/90 backdrop-blur-sm p-4 overflow-x-auto h-24 flex items-center">
+            <div className="flex space-x-2 justify-center min-w-max mx-auto">
               {images.map((image, index) => (
                 <button
                   key={index}
