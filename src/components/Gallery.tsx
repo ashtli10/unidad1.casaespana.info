@@ -105,6 +105,25 @@ const Gallery: React.FC = () => {
     document.body.style.overflow = 'hidden';
     // Preload adjacent images for smooth navigation
     preloadAdjacentImages(index);
+    
+    // Center the initial thumbnail after lightbox opens
+    setTimeout(() => {
+      const thumbnailContainer = document.querySelector('.thumbnail-container');
+      const selectedThumbnail = document.querySelector(`[data-thumbnail-index="${index}"]`);
+      
+      if (thumbnailContainer && selectedThumbnail) {
+        const containerWidth = thumbnailContainer.clientWidth;
+        const thumbnailLeft = (selectedThumbnail as HTMLElement).offsetLeft;
+        const thumbnailWidth = (selectedThumbnail as HTMLElement).offsetWidth;
+        
+        const scrollLeft = thumbnailLeft - (containerWidth / 2) + (thumbnailWidth / 2);
+        
+        thumbnailContainer.scrollTo({
+          left: scrollLeft,
+          behavior: 'smooth'
+        });
+      }
+    }, 100); // Small delay to ensure DOM is ready
   };
 
   const preloadAdjacentImages = (currentIndex: number) => {
@@ -133,17 +152,75 @@ const Gallery: React.FC = () => {
     const newIndex = (currentImageIndex + 1) % images.length;
     setCurrentImageIndex(newIndex);
     preloadAdjacentImages(newIndex);
+    
+    // Auto-scroll to center the thumbnail
+    setTimeout(() => {
+      const thumbnailContainer = document.querySelector('.thumbnail-container');
+      const selectedThumbnail = document.querySelector(`[data-thumbnail-index="${newIndex}"]`);
+      
+      if (thumbnailContainer && selectedThumbnail) {
+        const containerWidth = thumbnailContainer.clientWidth;
+        const thumbnailLeft = (selectedThumbnail as HTMLElement).offsetLeft;
+        const thumbnailWidth = (selectedThumbnail as HTMLElement).offsetWidth;
+        
+        const scrollLeft = thumbnailLeft - (containerWidth / 2) + (thumbnailWidth / 2);
+        
+        thumbnailContainer.scrollTo({
+          left: scrollLeft,
+          behavior: 'smooth'
+        });
+      }
+    }, 0);
   };
 
   const prevImage = () => {
     const newIndex = (currentImageIndex - 1 + images.length) % images.length;
     setCurrentImageIndex(newIndex);
     preloadAdjacentImages(newIndex);
+    
+    // Auto-scroll to center the thumbnail
+    setTimeout(() => {
+      const thumbnailContainer = document.querySelector('.thumbnail-container');
+      const selectedThumbnail = document.querySelector(`[data-thumbnail-index="${newIndex}"]`);
+      
+      if (thumbnailContainer && selectedThumbnail) {
+        const containerWidth = thumbnailContainer.clientWidth;
+        const thumbnailLeft = (selectedThumbnail as HTMLElement).offsetLeft;
+        const thumbnailWidth = (selectedThumbnail as HTMLElement).offsetWidth;
+        
+        const scrollLeft = thumbnailLeft - (containerWidth / 2) + (thumbnailWidth / 2);
+        
+        thumbnailContainer.scrollTo({
+          left: scrollLeft,
+          behavior: 'smooth'
+        });
+      }
+    }, 0);
   };
 
   const goToImage = (index: number) => {
     setCurrentImageIndex(index);
     preloadAdjacentImages(index);
+    
+    // Scroll to center the selected thumbnail
+    setTimeout(() => {
+      const thumbnailContainer = document.querySelector('.thumbnail-container');
+      const selectedThumbnail = document.querySelector(`[data-thumbnail-index="${index}"]`);
+      
+      if (thumbnailContainer && selectedThumbnail) {
+        const containerWidth = thumbnailContainer.clientWidth;
+        const thumbnailLeft = (selectedThumbnail as HTMLElement).offsetLeft;
+        const thumbnailWidth = (selectedThumbnail as HTMLElement).offsetWidth;
+        
+        // Calculate the scroll position to center the thumbnail
+        const scrollLeft = thumbnailLeft - (containerWidth / 2) + (thumbnailWidth / 2);
+        
+        thumbnailContainer.scrollTo({
+          left: scrollLeft,
+          behavior: 'smooth'
+        });
+      }
+    }, 0);
   };
 
   return (
@@ -232,7 +309,7 @@ const Gallery: React.FC = () => {
         {isLightboxOpen && (
         <div className="fixed inset-0 bg-black z-50 lightbox-container">
           {/* Header */}
-          <div className="flex items-center justify-between p-4 bg-black/90 backdrop-blur-sm h-16">
+          <div className="flex items-center justify-between p-3 bg-black/90 backdrop-blur-sm h-14">
             <div className="text-white">
               <h3 className="font-semibold text-lg">Galería de Fotos</h3>
               <p className="text-sm text-gray-300">
@@ -249,12 +326,12 @@ const Gallery: React.FC = () => {
           </div>
 
           {/* Main Image Area */}
-          <div className="relative flex items-center justify-center p-6 sm:p-8 lg:p-12" style={{ height: 'calc(100vh - 160px)' }}>
+          <div className="relative flex items-center justify-center p-4 sm:p-6 lg:p-8" style={{ height: 'calc(100vh - 110px)' }}>
             <div className="relative w-full h-full flex items-center justify-center">
               <img
                 src={images[currentImageIndex].src}
                 alt={images[currentImageIndex].alt}
-                className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+                className="max-w-[95%] max-h-[95%] object-contain rounded-lg shadow-2xl"
                 loading="lazy"
                 decoding="async"
               />
@@ -279,18 +356,19 @@ const Gallery: React.FC = () => {
           </div>
 
           {/* Image Description */}
-          <div className="bg-black/90 backdrop-blur-sm p-4 text-center h-16 flex items-center justify-center">
-            <p className="text-white text-sm sm:text-base max-w-2xl mx-auto">
+          <div className="bg-black/90 backdrop-blur-sm p-2 text-center h-12 flex items-center justify-center">
+            <p className="text-white text-sm max-w-2xl mx-auto">
               {images[currentImageIndex].alt}
             </p>
           </div>
 
           {/* Thumbnail Navigation */}
-          <div className="bg-black/90 backdrop-blur-sm p-4 overflow-x-auto h-24 flex items-center">
+          <div className="bg-black/90 backdrop-blur-sm p-4 overflow-x-auto h-24 flex items-center thumbnail-container">
             <div className="flex space-x-2 justify-center min-w-max mx-auto">
               {images.map((image, index) => (
                 <button
                   key={index}
+                  data-thumbnail-index={index}
                   onClick={() => goToImage(index)}
                   className={`relative flex-shrink-0 w-16 h-12 sm:w-20 sm:h-14 rounded-lg overflow-hidden transition-all duration-200 ${
                     index === currentImageIndex
