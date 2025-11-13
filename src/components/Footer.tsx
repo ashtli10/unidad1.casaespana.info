@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
           {/* Whatsapp Button */}
           <div>
             <a
-              href="https://w.app/6j0ysx"
+              href="https://api.whatsapp.com/send/?phone=523336670647&text=Hola,%20me%20interesa%20la%20propiedad%20en%20Avenida%20España%201640"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-full transition-colors duration-200 transform hover:scale-105"
@@ -49,7 +49,7 @@ const Footer: React.FC = () => {
               <span>Llamar</span>
             </a>
             <a
-              href="https://w.app/6j0ysx"
+              href="https://api.whatsapp.com/send/?phone=523336670647&text=Hola,%20me%20interesa%20la%20propiedad%20en%20Avenida%20España%201640"
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 flex items-center justify-center bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-lg transition-colors duration-200"
