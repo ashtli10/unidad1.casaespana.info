@@ -23,6 +23,7 @@ const Header: React.FC = () => {
 
   const menuItems = [
     { label: 'Inicio', id: 'hero' },
+    { label: 'Detalles', id: 'property-details' },
     { label: 'Galería', id: 'gallery' },
     { label: 'Planos', id: 'blueprints' },
     { label: 'Dictamen', id: 'dictamen' },

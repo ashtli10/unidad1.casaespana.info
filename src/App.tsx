@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import PropertyDetails from './components/PropertyDetails';
 import Gallery from './components/Gallery';
 import Blueprints from './components/Blueprints';
 import Dictamen from './components/Dictamen';
@@ -12,6 +13,7 @@ function App() {
     <div className="min-h-screen bg-white">
       <Header />
       <Hero />
+      <PropertyDetails />
       <Gallery />
       <Blueprints />
       <Dictamen />
