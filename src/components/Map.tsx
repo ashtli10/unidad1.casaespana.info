@@ -2,9 +2,9 @@ import React from 'react';
 import { MapPin } from 'lucide-react';
 
 const Map: React.FC = () => {
-  // Property coordinates from the HTML meta tags
-  const latitude = 20.6737;
-  const longitude = -103.3576;
+  // Property coordinates from Google Maps
+  const latitude = 20.6630647;
+  const longitude = -103.3624524;
   const address = "Avenida España 1640, Moderna, Guadalajara, Jalisco";
   
   // Google Maps Embed URL with satellite view
