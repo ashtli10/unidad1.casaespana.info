@@ -6,6 +6,7 @@ import Gallery from './components/Gallery';
 import Blueprints from './components/Blueprints';
 import Dictamen from './components/Dictamen';
 import PotentialProject from './components/PotentialProject';
+import Map from './components/Map';
 import Footer from './components/Footer';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <Blueprints />
       <Dictamen />
       <PotentialProject />
+      <Map />
       <Footer />
     </div>
   );
