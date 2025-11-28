@@ -8,7 +8,7 @@ const Map: React.FC = () => {
   const address = "Avenida España 1640, Moderna, Guadalajara, Jalisco";
   
   // Google Maps embed URL (docs: https://developers.google.com/maps/documentation/embed/get-started)
-  const mapUrl = `https://maps.google.com/maps?q=${latitude},${longitude}&z=18&hl=es&output=embed`;
+  const mapUrl = `https://maps.google.com/maps?q=${latitude},${longitude}&z=18&t=k&hl=es&output=embed`; // t=k = satellite
 
   return (
     <section id="map" className="py-16 sm:py-20 bg-gray-50">
