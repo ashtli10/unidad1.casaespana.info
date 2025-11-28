@@ -3,12 +3,12 @@ import { MapPin } from 'lucide-react';
 
 const Map: React.FC = () => {
   // Property coordinates from Google Maps
-  const latitude = 20.663009;
-  const longitude = -103.362455;
+  const latitude = 20.6630647;
+  const longitude = -103.3624524;
   const address = "Avenida España 1640, Moderna, Guadalajara, Jalisco";
   
-  // Google Maps Embed URL with satellite view
-  const mapUrl = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3732.8!2d${longitude}!3d${latitude}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDQwJzI1LjMiTiAxMDPCsDIxJzI3LjQiVw!5e1!3m2!1ses!2smx!4v1620000000000!5m2!1ses!2smx`;
+  // Google Maps embed URL (docs: https://developers.google.com/maps/documentation/embed/get-started)
+  const mapUrl = `https://maps.google.com/maps?q=${latitude},${longitude}&z=18&hl=es&output=embed`;
 
   return (
     <section id="map" className="py-16 sm:py-20 bg-gray-50">
