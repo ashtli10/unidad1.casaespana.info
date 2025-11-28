@@ -29,6 +29,9 @@ const Hero: React.FC = () => {
                 <span className="block text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-medium opacity-90">
                   MODERNA • GUADALAJARA, JALISCO
                 </span>
+                <span className="block text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-amber-300 mt-2">
+                  $11,500,000 MXN
+                </span>
               </div>
             </div>
           </h1>
