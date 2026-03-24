@@ -23,3 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# Large source files (not needed in repo)
+template.html
+*.pdf
+!public/*.pdf
