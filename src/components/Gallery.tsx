@@ -10,12 +10,6 @@ const galleryItems = [
   { src: '/fotos/7.webp', label: 'Acceso terraza', classes: '' },
   { src: '/fotos/8.webp', label: 'Cochera · 2 lugares', classes: '' },
   { src: '/fotos/9.webp', label: 'Area de lavado', classes: '' },
-  { src: '/fotos/10.webp', label: 'Recamara · Render amueblado', classes: 'g-span-2c' },
-  { src: '/fotos/11.webp', label: 'Recamara principal · Render', classes: 'g-span-2c' },
-  { src: '/fotos/12.webp', label: 'Recamara · Vista lateral', classes: '' },
-  { src: '/fotos/13.webp', label: 'Interior · Vista al patio', classes: '' },
-  { src: '/fotos/14.webp', label: 'Area de lavado · Equipada', classes: '' },
-  { src: '/fotos/15.webp', label: 'Fachada · Render exterior', classes: '' },
 ];
 
 const Gallery: React.FC = () => {

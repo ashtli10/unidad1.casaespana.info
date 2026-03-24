@@ -10,12 +10,6 @@ const galleryImages = [
   { src: '/fotos/7.webp', label: 'Acceso terraza' },
   { src: '/fotos/8.webp', label: 'Cochera · 2 lugares' },
   { src: '/fotos/9.webp', label: 'Area de lavado' },
-  { src: '/fotos/10.webp', label: 'Recamara · Render amueblado' },
-  { src: '/fotos/11.webp', label: 'Recamara principal · Render' },
-  { src: '/fotos/12.webp', label: 'Recamara · Vista lateral' },
-  { src: '/fotos/13.webp', label: 'Interior · Vista al patio' },
-  { src: '/fotos/14.webp', label: 'Area de lavado · Equipada' },
-  { src: '/fotos/15.webp', label: 'Fachada · Render exterior' },
 ];
 
 const Lightbox: React.FC = () => {
