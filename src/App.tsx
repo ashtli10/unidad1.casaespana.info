@@ -1,27 +1,58 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import PropertyDetails from './components/PropertyDetails';
+import StatsBar from './components/StatsBar';
+import Plusvalia from './components/Plusvalia';
 import Gallery from './components/Gallery';
-import Blueprints from './components/Blueprints';
-import Dictamen from './components/Dictamen';
-import PotentialProject from './components/PotentialProject';
-import Map from './components/Map';
+import Features from './components/Features';
+import RoofGarden from './components/RoofGarden';
+import Location from './components/Location';
+import FloorPlan from './components/FloorPlan';
+import CTA from './components/CTA';
 import Footer from './components/Footer';
+import Lightbox from './components/Lightbox';
 
 function App() {
+  useEffect(() => {
+    const intObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    const observeAll = () => {
+      document.querySelectorAll('.reveal:not(.visible)').forEach(el => intObs.observe(el));
+    };
+
+    observeAll();
+
+    // Also observe any dynamically added .reveal elements
+    const mutObs = new MutationObserver(observeAll);
+    mutObs.observe(document.body, { childList: true, subtree: true });
+
+    return () => {
+      intObs.disconnect();
+      mutObs.disconnect();
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen bg-white">
+    <>
       <Header />
       <Hero />
-      <PropertyDetails />
+      <StatsBar />
+      <Plusvalia />
       <Gallery />
-      <Blueprints />
-      <Dictamen />
-      <PotentialProject />
-      <Map />
+      <Features />
+      <RoofGarden />
+      <Location />
+      <FloorPlan />
+      <CTA />
       <Footer />
-    </div>
+      <Lightbox />
+    </>
   );
 }
 
