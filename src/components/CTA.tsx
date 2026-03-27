@@ -6,7 +6,7 @@ const CTA: React.FC = () => {
   return (
     <section className="cta" id="contacto">
       <div className="cta-divider"></div>
-      <div className="cta-price">$5<span>,</span>100<span>,</span>000</div>
+      <div className="cta-price">$4<span>,</span>500<span>,</span>000</div>
       <div className="cta-currency">PESOS MEXICANOS</div>
       <div className="cta-headline">
         Una unidad con <em>caracter propio</em> en un edificio boutique de 5 departamentos. Lista para escriturar.

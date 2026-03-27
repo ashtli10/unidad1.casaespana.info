@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
           <div className="hero-tag">Colonia Moderna &middot; Guadalajara</div>
           <div className="hero-price-block">
             <div className="hero-price">
-              $5<span className="hero-price-accent">,</span>100<span className="hero-price-accent">,</span>000
+              $4<span className="hero-price-accent">,</span>500<span className="hero-price-accent">,</span>000
             </div>
             <div className="hero-currency">PESOS MEXICANOS</div>
           </div>
